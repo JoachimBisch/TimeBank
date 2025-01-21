@@ -8,7 +8,12 @@ export default defineConfig({
   },
   server: {
     hmr: {
-      timeout: 5000
-    }
-  }
+      timeout: 5000,
+    },
+  },
+  build: {
+    rollupOptions: {
+      input: 'index.html', // Explicitement définir le fichier d'entrée
+    },
+  },
 });

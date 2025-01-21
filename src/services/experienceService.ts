@@ -19,17 +19,22 @@ class ExperienceService extends BaseService {
 
   async getUserExperiences(userId: string): Promise<TimeExperience[]> {
     return this.withAuth(async () => {
-      const q = query(
-        collection(db, this.COLLECTION),
-        where('userId', '==', userId),
-        where('status', '==', 'active')
-      );
-      
-      const querySnapshot = await getDocs(q);
-      return querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      } as TimeExperience));
+      try {
+        const q = query(
+          collection(db, this.COLLECTION),
+          where('userId', '==', userId),
+          where('status', '==', 'active')
+        );
+
+        const querySnapshot = await getDocs(q);
+        return querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        } as TimeExperience));
+      } catch (error) {
+        console.error('❌ Error fetching user experiences:', error);
+        throw new Error('Failed to fetch user experiences. Please try again later.');
+      }
     });
   }
 

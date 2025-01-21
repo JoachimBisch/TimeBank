@@ -1,4 +1,3 @@
-```typescript
 export interface TimeTransaction {
   id?: string;
   fromUserId: string;
@@ -20,4 +19,3 @@ export interface TransferTimeParams {
   bookingId: string;
   experienceId: string;
 }
-```

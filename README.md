@@ -1,8 +1,17 @@
 # TimeBank
 
-À  faire : 
+À faire :
 
-- availibility 
-    - validation de réserver une fois qu'on a reservé une expérience
+- availibility
+  - validation de réserver une fois qu'on a reservé une expérience
+    for now missing or insufficient permission from dev tools in the web consol
+    20/01 : les disponibilités maintenant s'ajoutent à la base de données, mais il est nécessaire de recharger la page pour les faire apparaître en dessous du calendrier où l'on détermine ses disponibilitées
+    - erreur pour charger les disponibilités de quelqu'un quand un autre utilisateur essaie de réserver l'expérience de ce quelqu'un
 - envoyer notification par mail lorsqu'on réserve
 - checker que database ok pour 30 personnes
+
+Logique quant à l
+
+## à faire pour plus tard :
+
+dans src/components/bookings/TimeSlotPicker.tsx => les timeslot devrait avoir un id, ce serait mieux, mais alors il faut aller modifier le type "TimeSlot"

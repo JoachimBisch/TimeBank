@@ -5,19 +5,19 @@ const celebrities = [
   {
     name: 'Michelle Obama',
     role: 'Leadership Coach',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400&h=400&fit=crop',
+    image: 'https://tse4.mm.bing.net/th?id=OIP.lCZmDiDHR2N-hEnS8Al_WAHaE7&pid=Api',
     quote: 'Sharing knowledge is the greatest form of empowerment'
   },
   {
     name: 'Elon Musk',
     role: 'Tech Mentor',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&h=400&fit=crop',
+    image: 'https://cms.qz.com/wp-content/uploads/2017/06/rtr3fy5u.jpg?quality=75&strip=all&w=1200&h=630&crop=1',
     quote: 'Innovation happens when minds connect'
   },
   {
     name: 'Emma Watson',
     role: 'Literature Expert',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=400&fit=crop',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Steve_Jobs_Headshot_2010-CROP.jpg',
     quote: 'Books are just the beginning of learning'
   },
   {

@@ -4,7 +4,7 @@ import { fr } from 'date-fns/locale';
 import { Calendar } from '../calendar/Calendar';
 import { availabilityService } from '../../services/availability/availabilityService';
 import { Availability } from '../../services/availability/types';
-import { TimeExperience } from '../../types';
+// import { TimeExperience } from '../../types';
 import { Clock } from 'lucide-react';
 import { LoadingSpinner } from '../ui/LoadingSpinner';
 import { ErrorMessage } from '../ui/ErrorMessage';
@@ -37,6 +37,7 @@ export const ExperienceAvailabilityCalendar: React.FC<ExperienceAvailabilityCale
       setError(null);
       const slots = await availabilityService.getExperienceAvailabilities(experience.id);
       setAvailabilities(slots);
+      console.log(setLoading)
     } catch (err) {
       setError('Unable to load available time slots');
     } finally {

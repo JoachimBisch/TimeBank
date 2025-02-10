@@ -3,8 +3,11 @@ import * as admin from 'firebase-admin';
 import * as nodemailer from 'nodemailer';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
+import { onCall } from "firebase-functions/v2/https";
+import { onSchedule } from 'firebase-functions/scheduler';
 
 admin.initializeApp();
+const db = admin.firestore();
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -16,15 +19,15 @@ const transporter = nodemailer.createTransport({
 
 const FROM_EMAIL = 'TimeBank <noreply@timebank.com>';
 
-export const sendEmail = functions.https.onCall(async (data, context) => {
-  if (!context.auth) {
+export const sendEmail = onCall({ cors: true }, async (request) => {
+  if (!request.auth) { // Check if user is authenticated
     throw new functions.https.HttpsError(
       'unauthenticated',
       'User must be authenticated to send emails'
     );
   }
 
-  const { type, to, data: emailData } = data;
+  const { type, to, data: emailData } = request.data;
 
   let subject = '';
   let html = '';
@@ -82,61 +85,59 @@ export const sendEmail = functions.https.onCall(async (data, context) => {
   }
 });
 
-// Cloud Function to send session reminders
-export const sendSessionReminders = functions.pubsub
-  .schedule('0 0 * * *') // Run at midnight every day
-  .timeZone('Europe/Paris')
-  .onRun(async () => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+export const sendSessionReminders = onSchedule('0 0 * * *', async () => {
+  // Function will be triggered at midnight UTC time every day.
 
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);  // Set time to start of the day
 
-    try {
-      const bookingsSnapshot = await admin.firestore()
-        .collection('bookings')
-        .where('status', '==', 'confirmed')
-        .where('timeSlot.startTime', '>=', today)
-        .where('timeSlot.startTime', '<', tomorrow)
-        .get();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);  // Get tomorrow's date
 
-      const sendReminders = bookingsSnapshot.docs.map(async (doc) => {
-        const booking = doc.data();
-        
-        // Get user emails
-        const [host, guest] = await Promise.all([
-          admin.firestore().collection('users').doc(booking.hostUserId).get(),
-          admin.firestore().collection('users').doc(booking.guestUserId).get()
-        ]);
+  try {
+    const bookingsSnapshot = await admin.firestore()
+      .collection('bookings')
+      .where('status', '==', 'confirmed')
+      .where('timeSlot.startTime', '>=', today)
+      .where('timeSlot.startTime', '<', tomorrow)
+      .get();
 
-        // Send reminders to both host and guest
-        await Promise.all([
-          transporter.sendMail({
-            from: FROM_EMAIL,
-            to: host.data()?.email,
-            subject: `Rappel : Session ${booking.experienceTitle} aujourd'hui`,
-            html: `
-              <h2>Rappel : Vous animez une session aujourd'hui !</h2>
-              <p>Vous animez "${booking.experienceTitle}"</p>
-              <p><strong>Horaire :</strong> ${format(booking.timeSlot.startTime.toDate(), 'HH:mm')} - ${format(booking.timeSlot.endTime.toDate(), 'HH:mm')}</p>
-            `
-          }),
-          transporter.sendMail({
-            from: FROM_EMAIL,
-            to: guest.data()?.email,
-            subject: `Rappel : Session ${booking.experienceTitle} aujourd'hui`,
-            html: `
-              <h2>Rappel : Vous participez à une session aujourd'hui !</h2>
-              <p>Vous participez à "${booking.experienceTitle}"</p>
-              <p><strong>Horaire :</strong> ${format(booking.timeSlot.startTime.toDate(), 'HH:mm')} - ${format(booking.timeSlot.endTime.toDate(), 'HH:mm')}</p>
-            `
-          })
-        ]);
-      });
+    const sendReminders = bookingsSnapshot.docs.map(async (doc) => {
+      const booking = doc.data();
 
-      await Promise.all(sendReminders);
-    } catch (error) {
-      console.error('Error sending reminders:', error);
-    }
-  });
+      // Get user emails
+      const [host, guest] = await Promise.all([
+        admin.firestore().collection('users').doc(booking.hostUserId).get(),
+        admin.firestore().collection('users').doc(booking.guestUserId).get()
+      ]);
+
+      // Send reminders to both host and guest
+      await Promise.all([
+        transporter.sendMail({
+          from: FROM_EMAIL,
+          to: host.data()?.email,
+          subject: `Rappel : Session ${booking.experienceTitle} aujourd'hui`,
+          html: `
+            <h2>Rappel : Vous animez une session aujourd'hui !</h2>
+            <p>Vous animez "${booking.experienceTitle}"</p>
+            <p><strong>Horaire :</strong> ${format(booking.timeSlot.startTime.toDate(), 'HH:mm')} - ${format(booking.timeSlot.endTime.toDate(), 'HH:mm')}</p>
+          `
+        }),
+        transporter.sendMail({
+          from: FROM_EMAIL,
+          to: guest.data()?.email,
+          subject: `Rappel : Session ${booking.experienceTitle} aujourd'hui`,
+          html: `
+            <h2>Rappel : Vous participez à une session aujourd'hui !</h2>
+            <p>Vous participez à "${booking.experienceTitle}"</p>
+            <p><strong>Horaire :</strong> ${format(booking.timeSlot.startTime.toDate(), 'HH:mm')} - ${format(booking.timeSlot.endTime.toDate(), 'HH:mm')}</p>
+          `
+        })
+      ]);
+    });
+
+    await Promise.all(sendReminders);
+  } catch (error) {
+    console.error('Error sending reminders:', error);
+  }
+});

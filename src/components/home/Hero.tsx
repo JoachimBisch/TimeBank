@@ -34,7 +34,7 @@ export const Hero: React.FC = () => {
             <h1 className="text-6xl sm:text-7xl font-bold tracking-tight">
               <span className="block mb-2">Le Temps est</span>
               <span className="block bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 bg-clip-text text-transparent">
-                Votre Nouvelle Monnaie
+                Votre Nouvelle Monnaie test
               </span>
             </h1>
 

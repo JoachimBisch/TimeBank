@@ -17,12 +17,19 @@ class AvailabilityService {
   private readonly COLLECTION = 'disponibilites';
   // Exemple de méthode pour obtenir les disponibilités pour une expérience
   async getExperienceAvailabilities(experienceId: string): Promise<Availability[]> {
-    // Logique pour récupérer les disponibilités liées à une expérience
+    console.log('Fetching availabilities for experienceId:', experienceId);
     const response = await fetch(`/api/availabilities?experienceId=${experienceId}`);
+    console.log('API response status:', response.status);
+  
     if (!response.ok) {
+      console.error('API error:', await response.text());
       throw new Error('Erreur lors de la récupération des disponibilités.');
     }
-    return response.json();  // Suppose que la réponse de l'API est un tableau de disponibilités
+    const rawText = await response.text();
+    console.log('Raw API response as text:', rawText);
+    const data = await response.json();
+    console.log('Raw data retrieved from API:', data); // <-- Ajoute ce log
+    return data;
   }
   async createAvailability(data: {
     userId: string;

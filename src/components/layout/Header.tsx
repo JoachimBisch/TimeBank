@@ -40,7 +40,7 @@ export const Header: React.FC = () => {
                   to="/availability" 
                   className="text-gray-600 hover:text-black transition-colors"
                 >
-                  <Calendar className="w-5 h-5" />
+                  {/* <Calendar className="w-5 h-5" /> */}
                 </Link>
                 <Link 
                   to="/experiences" 

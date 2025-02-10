@@ -49,5 +49,12 @@ service cloud.firestore {
           .hasOnly(['status', 'updatedAt'])
       );
     }
+    // Experiences collection
+    match /experiences/{experienceId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() && isOwner(resource.data.userId);
+      allow delete: if isAuthenticated() && isOwner(resource.data.userId);
+    }
   }
 }

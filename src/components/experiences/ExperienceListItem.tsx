@@ -30,7 +30,7 @@ export const ExperienceListItem: React.FC<ExperienceListItemProps> = ({
             onClick={onEdit}
             className="text-gray-600 hover:text-black"
           >
-            <Pencil className="w-4 h-4" />
+            {/* <Pencil className="w-4 h-4" /> */}
           </button>
           <button
             onClick={handleDelete}
@@ -39,7 +39,7 @@ export const ExperienceListItem: React.FC<ExperienceListItemProps> = ({
               isDeleting ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
-            <Trash2 className="w-4 h-4" />
+            {/* <Trash2 className="w-4 h-4" /> */}
           </button>
         </div>
       </div>

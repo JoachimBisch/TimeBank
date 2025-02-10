@@ -15,3 +15,9 @@ Logique quant à l
 ## à faire pour plus tard :
 
 dans src/components/bookings/TimeSlotPicker.tsx => les timeslot devrait avoir un id, ce serait mieux, mais alors il faut aller modifier le type "TimeSlot"
+
+## Cradotest modifications
+
+- in src/components/layout/Header.tsx : line 43 the calendar is commented
+- in src/components/experiences/ExperienceListItem.tsx : line 33 : the editing icon is commented
+- in src/components/experiences/ExperienceListItem.tsx : line 42 : the trash icon is commented

@@ -23,3 +23,4 @@ dans src/components/bookings/TimeSlotPicker.tsx => les timeslot devrait avoir un
 - in src/components/experiences/ExperienceListItem.tsx : line 42 : the trash icon is commented
 - in src/components/experiences/ExperienceAvailabilityCalendar.tsx : line 68-74 : error message commented
 - in src/components/experiences/ExperienceAvailabilityCalendar.tsx : line 41 : error message commented
+- in src/components/home/Hero.tsx : line 100 : commented celebrities

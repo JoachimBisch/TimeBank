@@ -97,7 +97,7 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      <CelebrityTimebankers />
+      {/* <CelebrityTimebankers /> */}
       <Features />
     </>
   );

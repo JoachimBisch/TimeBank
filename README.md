@@ -21,3 +21,5 @@ dans src/components/bookings/TimeSlotPicker.tsx => les timeslot devrait avoir un
 - in src/components/layout/Header.tsx : line 43 the calendar is commented
 - in src/components/experiences/ExperienceListItem.tsx : line 33 : the editing icon is commented
 - in src/components/experiences/ExperienceListItem.tsx : line 42 : the trash icon is commented
+- in src/components/experiences/ExperienceAvailabilityCalendar.tsx : line 68-74 : error message commented
+- in src/components/experiences/ExperienceAvailabilityCalendar.tsx : line 41 : error message commented

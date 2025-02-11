@@ -38,7 +38,7 @@ export const ExperienceAvailabilityCalendar: React.FC<ExperienceAvailabilityCale
       const slots = await availabilityService.getExperienceAvailabilities(experience.id);
       setAvailabilities(slots);
     } catch (err) {
-      setError('Unable to load available time slots');
+      // setError('Unable to load available time slots');
     } finally {
       setLoading(false);
     }
@@ -65,13 +65,13 @@ export const ExperienceAvailabilityCalendar: React.FC<ExperienceAvailabilityCale
     selectedDate && isSameDay(a.date, selectedDate)
   );
 
-  if (availabilities.length === 0) {
-    return (
-      <div className="text-center py-8 text-gray-500">
-        No available time slots for this experience
-      </div>
-    );
-  }
+  // if (availabilities.length === 0) {
+  //   return (
+  //     <div className="text-center py-8 text-gray-500">
+  //       No available time slots for this experience
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="space-y-6">
@@ -106,7 +106,8 @@ export const ExperienceAvailabilityCalendar: React.FC<ExperienceAvailabilityCale
 
       {selectedDate && selectedDateSlots.length === 0 && (
         <div className="text-center py-4 text-gray-500">
-          No available slots for this date
+          Merci de contacter le support à l'adresse suivante pour réserver
+          timebank.contact@gmail.com
         </div>
       )}
     </div>

@@ -66,11 +66,11 @@ export const CelebrityTimebankers: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center">
           <p className="text-sm text-gray-500">
             * Celebrity profiles are for illustration purposes only
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

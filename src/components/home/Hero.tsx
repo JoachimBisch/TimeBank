@@ -42,6 +42,25 @@ export const Hero: React.FC = () => {
               Échangez vos compétences et services dans une économie collaborative basée sur le temps.
               Découvrez un nouveau mode d'échange où chaque minute compte.
             </p>
+            <section id="timebank-alpha" className="timebank-message">
+              <div className="container">
+                  <h2>Bienvenue sur TimeBank!</h2>
+                  <p>
+                      Nous sommes ravis de vous accueillir sur notre plateforme d'échange de temps en version alpha.
+                      Vous pouvez dès à présent ajouter les expériences que vous proposez.
+                  </p>
+                  <p>
+                      Pour toute réservation, modification, pour donner vos disponibilités concernant une expérience, ou pour toute autre question, 
+                      n'hésitez pas à nous contacter à l'adresse suivante : <br></br>
+                      <a href="mailto:timebank.contact@gmail.com">timebank.contact@gmail.com</a>.
+                  </p>
+                  <p>
+                      <strong>Note importante :</strong> Il n'est pas nécessaire de fournir vos disponibilités lors de la création d'une expérience. 
+                      Nous vous enverrons un Doodle en cas de réservation à l'adresse mai ci-dessus.
+                  </p>
+                  <p>Merci de votre participation à cette aventure !</p>
+              </div>
+          </section>
 
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <Link
@@ -55,7 +74,7 @@ export const Hero: React.FC = () => {
                 to="/experiences"
                 className="inline-flex items-center justify-center px-8 py-3 text-lg font-medium text-gray-900 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg"
               >
-                Découvrir les expériences
+                Découvrir les expériences proposées
               </Link>
             </div>
           </div>
@@ -63,9 +82,9 @@ export const Hero: React.FC = () => {
           {/* Statistics with glass effect */}
           <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
-              { value: '10K+', label: 'Utilisateurs actifs' },
-              { value: '50K+', label: 'Heures échangées' },
-              { value: '1000+', label: 'Compétences partagées' }
+              { value: 'Version Alpha', label: '' },
+              { value: '50', label: 'Heures échangées' },
+              { value: '100', label: 'Compétences partagées' }
             ].map(({ value, label }) => (
               <div key={label} className="glass-card p-8 hover:scale-105 transition-transform duration-300">
                 <p className="text-4xl font-bold bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent">

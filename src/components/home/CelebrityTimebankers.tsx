@@ -3,28 +3,28 @@ import { Star } from 'lucide-react';
 
 const celebrities = [
   {
-    name: 'Michelle Obama',
-    role: 'Leadership Coach',
-    image: 'https://tse4.mm.bing.net/th?id=OIP.lCZmDiDHR2N-hEnS8Al_WAHaE7&pid=Api',
-    quote: 'Sharing knowledge is the greatest form of empowerment'
+    name: 'Vous serez les suivants !',
+    role: '',
+    image: 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824147_1280.png',
+    quote: 'Le savoir est la plus grande forme de pouvoir.'
   },
   {
-    name: 'Elon Musk',
-    role: 'Tech Mentor',
-    image: 'https://cms.qz.com/wp-content/uploads/2017/06/rtr3fy5u.jpg?quality=75&strip=all&w=1200&h=630&crop=1',
-    quote: 'Innovation happens when minds connect'
+    name: 'Une communauté',
+    role: '',
+    image: 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824147_1280.png',
+    quote: 'L’innovation naît lorsque les esprits se connectent.'
   },
   {
-    name: 'Emma Watson',
-    role: 'Literature Expert',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Steve_Jobs_Headshot_2010-CROP.jpg',
-    quote: 'Books are just the beginning of learning'
+    name: 'La force d\'un groupe',
+    role: '',
+    image: 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824147_1280.png',
+    quote: 'Les livres ne sont que le début de l’apprentissage.'
   },
   {
-    name: 'Gordon Ramsay',
-    role: 'Culinary Master',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&h=400&fit=crop',
-    quote: 'Cooking is about passion, not just recipes'
+    name: 'Ensemble',
+    role: '',
+    image: 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824147_1280.png',
+    quote: 'La cuisine, c’est de la passion, pas seulement des recettes.'
   }
 ];
 

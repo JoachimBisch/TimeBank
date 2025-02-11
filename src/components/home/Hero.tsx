@@ -51,7 +51,7 @@ export const Hero: React.FC = () => {
                   </p>
                   <p>
                       Pour toute réservation, modification, pour donner vos disponibilités concernant une expérience, ou pour toute autre question, 
-                      n'hésitez pas à nous contacter à l'adresse suivante : <br></br>
+                      il est pour l'instant nécessaire (et oui, version Alpha 😉) de nous contacter à l'adresse suivante : <br></br>
                       <a href="mailto:timebank.contact@gmail.com">timebank.contact@gmail.com</a>.
                   </p>
                   <p>

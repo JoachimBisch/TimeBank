@@ -22,7 +22,7 @@ export const Features: React.FC = () => {
             </div>
             <h3 className="text-2xl font-bold text-center">Gagnez du temps</h3>
             <p className="text-gray-600 leading-relaxed">
-              Transformez votre temps en opportunité. Démarrez avec 3 heures de crédit offerts et proposez vos compétences uniques à la communauté. Chaque heure que vous partagez est une heure gagnée pour découvrir, apprendre ou bénéficier des talents d'autres utilisateurs.
+              Transformez votre temps en opportunité. Démarrez avec 3 heures de crédit offerts et proposez vos compétences uniques à la communauté. Chaque heure que vous partagez est une heure gagnée dans votre solde pour découvrir, apprendre ou bénéficier des talents d'autres utilisateurs.
             </p>
           </div>
 
